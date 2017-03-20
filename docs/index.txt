@@ -1,0 +1,108 @@
+Welcome to Flask-Kaccel's documentation!
+========================================
+
+A Quick Flask-Kaccel Introduction
+----------------------------------
+
+Flask-Kaccel allow you to use Nginx X-Accel features on Flask application.
+
+How To
+--------
+
+Install Flask-Kaccel using PIP::
+
+	pip install flask-kaccel
+
+or::
+
+	python setup.py install
+
+Flask
+----------
+
+Flask example::
+
+	from flask import Flask, abort
+	from flask_kaccel import Kaccel
+
+	app = Flask(__name__)
+	app.config.update(
+		DEBUG = True,
+		SECRET_KEY = 'test',
+		KACCEL_HOST = "localhost:8080",
+		KACCEL_BASE_PATH = "/files/%s" ,
+		KACCEL_BUFFER = True,
+		KACCEL_CHARSET = "utf-8",
+		KACCEL_CACHE_EXPIRES = 60 * 60, # set expires time 1 minute
+		KACCEL_LIMIT_RATE = 1024 * 64, # set download limit to 64kbps
+	)
+
+	# Initialize Kaccel
+	kaccel = Kaccel(app)
+
+	# Add Routes
+	@app.route('/download/<path:filename>')
+	def download(filename):
+		base_path = "/path/to/files/"
+		file_path = "%s%s" % (base_path, filename)
+		resp = kaccel.send_from_directory(file=file_path)
+		if resp:
+			return resp
+		else:
+			abort(404)
+
+	# Error Handle
+	@app.errorhandler(404)
+	def not_found(error):
+		return "Not Found", 404
+
+	if __name__ == "__main__":
+		app.run(host='0.0.0.0', port=8080, debug=True)
+
+Nginx
+----------
+
+If you serve Flask behind Nginx, then you can delegate the file streaming
+to Nginx and get increased performance:
+
+* lower resources used by Python/Flask workers ;
+* faster download.
+
+See `Nginx X-accel documentation`_ for details.
+
+
+Nginx config example:
+
+.. code-block:: nginx
+
+	charset utf-8;
+
+	server {
+		location / {
+			proxy_pass         http://127.0.0.1:8080/;
+			proxy_redirect     off;
+			proxy_set_header   Host             $host;
+			proxy_set_header   X-Real-IP        $remote_addr;
+			proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+		}
+		location /files/ {
+			internal;
+			alias /path/to/files/;
+		}
+	}
+
+API
+----------
+
+.. autoclass:: flask_kaccel.Kaccel
+   :members:
+
+Indices and tables
+-------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+
+.. _`Nginx X-accel documentation`: http://wiki.nginx.org/X-accel 

@@ -1,0 +1,11 @@
+docs/_*
+MANIFEST
+dist
+*.pyc
+*.swp
+doctrees
+*.inv
+*.egg-info
+.coverage
+cover
+build
