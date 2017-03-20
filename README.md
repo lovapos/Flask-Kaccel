@@ -1,5 +1,6 @@
 # Flask-Kaccel
 
+[![Documentation Status](https://readthedocs.org/projects/flask-kaccel/badge/?version=latest)](http://flask-kaccel.readthedocs.io/en/latest/?badge=latest)
 
 Add Flask support for Nginx X-Accel
 
@@ -16,11 +17,11 @@ or download this repository and run setup.py
 
 ### Documentation
 
-The documentation can be found here [https://ommongo.readthedocs.io/en/latest/index.html](https://ommongo.readthedocs.io/en/latest/index.html "OmMongo Documentation")
+The documentation can be found here [https://flask-kaccel.readthedocs.io/en/latest/](https://flask-kaccel.readthedocs.io/en/latest/ "Flask-Kaccel Documentation")
 
 ### Test
 
-	sudo pip install -r requirements.testing.txt
+	sudo pip install -r requirements.txt
 
 ### Release Notes
 
