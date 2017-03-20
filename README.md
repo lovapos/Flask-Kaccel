@@ -1,8 +1,11 @@
 # Flask-Kaccel
 
 [![Documentation Status](https://readthedocs.org/projects/flask-kaccel/badge/?version=latest)](http://flask-kaccel.readthedocs.io/en/latest/?badge=latest)
+[![PyPI](https://img.shields.io/pypi/v/flask-kaccel.svg)](https://pypi.python.org/pypi/Flask-Kaccel)
+[![license](https://img.shields.io/github/license/bapakode/flask-kaccel.svg)](https://github.com/bapakode/Flask-Kaccel/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/bapakode/flask-kaccel.svg)](https://github.com/bapakode/Flask-Kaccel/issues)
 
-Add Flask support for Nginx X-Accel
+Add Flask support for Nginx X-Accel features
 
 --------
 ### Installation
