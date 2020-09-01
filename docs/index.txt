@@ -105,4 +105,4 @@ Indices and tables
 * :ref:`search`
 
 
-.. _`Nginx X-accel documentation`: http://wiki.nginx.org/X-accel 
+.. _`Nginx X-accel documentation`: http://wiki.nginx.org/X-accel

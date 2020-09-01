@@ -9,8 +9,8 @@ templates_path = ['_templates']
 source_suffix = '.txt'
 master_doc = 'index'
 project = 'Flask-Kaccel'
-copyright = '2017, Bapakode Open Source'
-author = 'Bapakode Open Source'
+copyright = '2017, LovaPOS'
+author = 'LovaPOS'
 version = '1.0'
 release = '1.0'
 language = None
@@ -24,7 +24,7 @@ autodoc_member_order = 'bysource'
 
 html_theme = 'flask'
 html_theme_options = {
-    "github_fork": "bapakode/Flask-Kaccel",
+    "github_fork": "lovapos/Flask-Kaccel",
     "index_logo": "logo.png",
     "index_logo_height": "150px",
 }
@@ -56,7 +56,7 @@ latex_elements = {
     # 'figure_align': 'htbp',
 }
 
-latex_documents = [(master_doc, 'Flask-Kaccel.tex', 'Flask-Kaccel Documentation','Bapakode Open Source', 'manual'),]
+latex_documents = [(master_doc, 'Flask-Kaccel.tex', 'Flask-Kaccel Documentation','LovaPOS', 'manual'),]
 
 # -- Options for manual page output ---------------------------------------
 

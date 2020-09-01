@@ -3,10 +3,10 @@ from setuptools import setup
 setup(
     name='Flask-Kaccel',
     version='1.0',
-    url='http://bapakode.org/flask-kaccel',
+    url='https://flask-kaccel.readthedocs.io/en/latest/',
     license='MIT',
-    author='Bapakode Open Source',
-    author_email='opensource@bapakode.org',
+    author='LovaPOS',
+    author_email='dev@lovapos.com',
     description='Add Flask support for Nginx X-Accel',
     packages=['flask_kaccel'],
     namespace_packages=['flask_kaccel'],
