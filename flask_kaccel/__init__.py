@@ -1,5 +1,5 @@
 __import__('pkg_resources').declare_namespace(__name__)
-from flask import Response, request
+from flask import Response, request, abort
 from .mime import MIME
 from .version import version
 from os import path
@@ -127,7 +127,7 @@ class Kaccel(object):
 		''' send file from directory using global configuration.
 
 		:param filename: file name
-		:return: return Request() object if success and None if fail.
+		:return: return Request() object if success and error 404 if fail.
 		'''
 		return self.send_file(
 			file_path = path.join(self.files_path, filename),
@@ -155,18 +155,18 @@ class Kaccel(object):
 		:param charset: sets the charset of the file, default="utf-8"
 		:param expires: sets when to expire the file in the internal NGINX cache, value=(None|int), default=None
 		:param limit: sets the rate limit for this single request. off means unlimited, value=(None|int), default=None
-		:return: return Request() object if success and None if fail.
+		:return: return Request() object if success and error 404 if fail.
 		'''
 		try:
 			if self.host == request.host:
-				return None
+				return abort(404)
 
 			content_length	= self.filesize(file_path)
 			content_type 	= self.mimetype(file_path)
 			filename		= self.filename(file_path)
 
 			if not content_length or not content_type or not filename:
-				return None
+				return abort(404)
 
 			response = Response()
 			response.headers['Content-Length'] = content_length
@@ -180,4 +180,4 @@ class Kaccel(object):
 			return response
 
 		except:
-			return None
+			return abort(404)
