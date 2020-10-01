@@ -1,18 +1,15 @@
 from setuptools import setup, find_packages
 from flask_kaccel.version import version
 
-with open('README.md') as f:
-	long_description = f.read()
-
 setup(
 	name='Flask-Kaccel',
 	version=version,
-	url='https://flask-kaccel.readthedocs.io/en/latest/',
+	url='https://lovapos.com/',
 	license='MIT',
 	author='LovaPOS',
 	author_email='dev@lovapos.com',
 	description='Add Flask support for Nginx X-Accel',
-	long_description=long_description,
+	long_description='Documentation: https://flask-kaccel.readthedocs.io/en/latest/',
 	long_description_content_type='text/markdown',
 	packages=find_packages(include=['flask_kaccel']),
 	namespace_packages=['flask_kaccel'],

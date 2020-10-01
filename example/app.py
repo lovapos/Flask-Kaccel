@@ -22,18 +22,14 @@ kaccel.init_app(app)
 # Add Routes
 @app.route('/download/<path:filename>')
 def download(filename):
-		base_path = "/var/www/files/"
-		file_path = path.join(base_path, filename)
-		resp = kaccel.send_from_directory(file=file_path)
-		if resp:
-				return resp
-		else:
-				abort(404)
+	return kaccel.send_from_directory(
+			file = path.join("/var/www/files/", filename)
+		)
 
 # Error Handle
 @app.errorhandler(404)
 def not_found(error):
-		return "Not Found", 404
+	return "Not Found", 404
 
 if __name__ == "__main__":
 		app.run(host='0.0.0.0', port=8080, debug=True)
